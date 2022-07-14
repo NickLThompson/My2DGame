@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import entity.Entity;
 import entity.Player;
 import object.SuperObject;
 import tile.TileManager;
@@ -53,6 +54,7 @@ public class GamePanel extends JPanel implements Runnable{
 		 * This does not mean that we can only have 10 objects in the game			*
 		 * Displaying too many objects at once can slow down your game's performance*
 		 ****************************************************************************/
+		public Entity npc[] = new Entity[10];
 		
 		
 		
@@ -91,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable{
 		public void setupGame() {
 			
 			aSetter.setObject();
-			
+			aSetter.setNPC();
 			playMusic(0); // MUSIC HERE 
 			stopMusic();
 			gameState = playState;
@@ -179,7 +181,14 @@ public class GamePanel extends JPanel implements Runnable{
 		public void update() {
 			
 			if(gameState == playState) {
-				player.update();		
+				// PLAYER
+				player.update();
+				// NPC
+				for(int i = 0; i < npc.length; i++) {
+					if(npc[i] != null) {
+						npc[i].update();
+					}
+				}		
 			}
 			if(gameState == pauseState) {
 				// nothing
@@ -193,7 +202,7 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			// DEBUG
 			long drawStart = 0;
-			if(keyH.checkDrawTime == true) {
+			if(keyH.checkDrawTime) {
 				drawStart = System.nanoTime();
 			}
 			
@@ -210,6 +219,12 @@ public class GamePanel extends JPanel implements Runnable{
 				}
 				
 			}
+			// NPC
+			for(int i = 0; i < npc.length; i++) {
+				if(npc[i] != null) {
+					npc[i].draw(g2);
+				}
+			}
 			
 			// player
 			player.draw(g2);
@@ -219,7 +234,7 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			
 			// DEBUG
-			if(keyH.checkDrawTime == true) {
+			if(keyH.checkDrawTime) {
 				long drawEnd = System.nanoTime();
 				long passed = drawEnd - drawStart;
 				g2.setColor(Color.white);
