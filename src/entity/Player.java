@@ -72,7 +72,7 @@ public class Player extends Entity{
 
 	public void update() {
 						
-		if(!moving) {
+		if(moving == false) {
 			if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) { 
 				
 				if(keyH.upPressed == true) {
@@ -101,32 +101,7 @@ public class Player extends Entity{
 				// CHECK OBJECT COLLISION
 				int  objIndex = gp.cChecker.checkObject(this, true);
 				pickUpObject(objIndex);
-
-				// CHECK NPC COLLISION
-				int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
-				interactNPC(npcIndex);
-
-				// IF COLLISION IS FALSE, PLAYER CAN MOVE
-				if(collisionOn == false) {
 				
-					switch(direction) {
-					case "up": worldY -= speed; break;
-					case "down": worldY += speed; break;
-					case "left": worldX -= speed; break;
-					case "right": worldX += speed; break;
-					}
-				}
-				
-				spriteCounter++;
-				if(spriteCounter > 17) {
-					if(spriteNum == 1) {
-						spriteNum = 2;
-					}
-					else if(spriteNum == 2) {
-						spriteNum = 1;
-					}
-					spriteCounter = 0;
-				}
 				}
 			else {
 				standCounter++;
@@ -138,7 +113,6 @@ public class Player extends Entity{
 		}
 		}
 		if(moving == true) {
-			// IF COLLISION IS FALSE, PLAYER CAN MOVE
 			if(collisionOn == false) {
 				
 				switch(direction) {
@@ -178,11 +152,6 @@ public class Player extends Entity{
 		
 		if(i != 999) {
 			// fill
-		}
-	}
-	public void interactNPC(int i) {
-		if(i != 999) {
-			System.out.println("You are hitting an npc!");
 		}
 	}
 	
