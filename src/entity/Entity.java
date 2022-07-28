@@ -38,7 +38,7 @@ public class Entity {
 	}
 
 	public void setAction() {
-		// fill
+		// filler
 	}
 	public void update() {
 
