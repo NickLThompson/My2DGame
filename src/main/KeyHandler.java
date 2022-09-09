@@ -7,7 +7,7 @@ public class KeyHandler implements KeyListener{
 
 	
 	GamePanel gp;
-	public boolean upPressed, downPressed, leftPressed, rightPressed;
+	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 	// DEBUG
 	boolean checkDrawTime = false;
 
@@ -47,6 +47,10 @@ public class KeyHandler implements KeyListener{
 			}
 			if(code == KeyEvent.VK_P) {
 				gp.gameState = gp.pauseState;
+				
+			}
+			if(code == KeyEvent.VK_ENTER) {
+				enterPressed = true;
 				
 			}
 							

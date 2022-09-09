@@ -72,9 +72,15 @@ public class UI {
 		int height = gp.tileSize * 4;
 		drawSubWindow(x, y, width, height);
 
-		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,28F));
 		x += gp.tileSize;
 		y += gp.tileSize;
+
+		// split the text inside the dialogue at this keyword
+		for(String line : currentDialogue.split("\n")) {
+			g2.drawString(line, x, y);
+			y += 40;
+		}
 		g2.drawString(currentDialogue, x, y);
 	}
 

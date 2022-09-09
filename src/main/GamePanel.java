@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable{
 		 * 576 (12) pixels vertically (up and down)			 *
 		 *****************************************************/
 		TileManager tileM = new  TileManager(this);
-		KeyHandler keyH = new KeyHandler(this);
+		public KeyHandler keyH = new KeyHandler(this);
 		Sound music = new Sound();
 		Sound se = new Sound();
 		public CollisionChecker cChecker = new CollisionChecker(this);
