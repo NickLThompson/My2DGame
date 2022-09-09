@@ -145,6 +145,7 @@ public class Player extends Entity {
 		if (i != 999) {
 			
 			gp.gameState = gp.dialogueState;
+			gp.npc[i].speak();
 		}
 		
 	}

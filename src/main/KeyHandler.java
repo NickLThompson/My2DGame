@@ -17,49 +17,64 @@ public class KeyHandler implements KeyListener{
 	}
 	
 	public KeyHandler() {
-		// TODO Auto-generated constructor stub
+		// fill
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		// fill
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
 		int code = e.getKeyCode(); // returns the integer KeyCode associated with the key in this event
+
+		// playState
+		if(gp.gameState == gp.playState) {
+			
+			if(code == KeyEvent.VK_W) {
+				upPressed = true;
+			}
+			if(code == KeyEvent.VK_S) {
+				downPressed = true;
+			}
+			if(code == KeyEvent.VK_A) {
+				leftPressed = true;	
+			}
+			if(code == KeyEvent.VK_D) {
+				rightPressed = true;
+			}
+			if(code == KeyEvent.VK_P) {
+				gp.gameState = gp.pauseState;
+				
+			}
+							
+			// DEBUG
+			if(code == KeyEvent.VK_T) {
+				if(checkDrawTime == false) {
+					checkDrawTime = true;
+				}
+				else if(checkDrawTime == true) {
+					checkDrawTime = false;
+				}
+			}
+
+		}
 		
 		// if the pressed key is W, upPressed = true; and soforth
-		
-		if(code == KeyEvent.VK_W) {
-			upPressed = true;
-		}
-		if(code == KeyEvent.VK_S) {
-			downPressed = true;
-		}
-		if(code == KeyEvent.VK_A) {
-			leftPressed = true;	
-		}
-		if(code == KeyEvent.VK_D) {
-			rightPressed = true;
-		}
-		if(code == KeyEvent.VK_P) {
-			if(gp.gameState == gp.playState) {
-				gp.gameState = gp.pauseState;
+
+		// pause state
+		else if(gp.gameState == gp.pauseState) {
+			if(code == KeyEvent.VK_P) {
+				gp.gameState = gp.playState;	
 			}
-			else if(gp.gameState == gp.pauseState) {
+		}
+
+		// dialogue state
+		if(gp.gameState == gp.dialogueState) {
+			if(code == KeyEvent.VK_ENTER) {
 				gp.gameState = gp.playState;
-			}
-		}
-						
-		// DEBUG
-		if(code == KeyEvent.VK_T) {
-			if(checkDrawTime == false) {
-				checkDrawTime = true;
-			}
-			else if(checkDrawTime == true) {
-				checkDrawTime = false;
 			}
 		}
 	}

@@ -18,6 +18,7 @@ public class UI {
 	public String message = "";
 	int messageCounter = 0;
 	public boolean gameFinished = false;
+	public String currentDialogue ="";
 
 	public UI(GamePanel gp) {
 		this.gp = gp;
@@ -69,13 +70,18 @@ public class UI {
 		int y = gp.tileSize / 2;
 		int width = gp.screenWidth - (gp.tileSize * 4);
 		int height = gp.tileSize * 4;
-
 		drawSubWindow(x, y, width, height);
+
+		g2.setFont(g2.getFont().deriveFont(Font.PLAIN,32F));
+		x += gp.tileSize;
+		y += gp.tileSize;
+		g2.drawString(currentDialogue, x, y);
 	}
 
 	public void drawSubWindow(int x, int y, int width, int height) {
-
-		Color c = new Color(0, 0, 0);
+		
+		// fourth number represents the alpha value (opacity)
+		Color c = new Color(0, 0, 0, 210);
 		g2.setColor(c);
 		g2.fillRoundRect(x, y, width, height, 35, 35);
 

@@ -31,6 +31,8 @@ public class Entity {
 	public int solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
+	String dialogues[] = new String[20];
+	int dialogueIndex = 0;
 	
 	
 	public Entity(GamePanel gp) {
@@ -38,6 +40,9 @@ public class Entity {
 	}
 
 	public void setAction() {
+		// fill
+	}
+	public void speak() {
 		// fill
 	}
 	public void update() {
