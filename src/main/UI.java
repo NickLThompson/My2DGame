@@ -81,7 +81,7 @@ public class UI {
 			g2.drawString(line, x, y);
 			y += 40;
 		}
-		g2.drawString(currentDialogue, x, y);
+		
 	}
 
 	public void drawSubWindow(int x, int y, int width, int height) {
